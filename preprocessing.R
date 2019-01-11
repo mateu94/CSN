@@ -15,6 +15,7 @@ View(dataset)
 dataset$V6_clean1 <- gsub("[^0-9A-Za-z///' ]+", "", dataset$V6)
 dataset$V6_clean2 <- gsub("[[:punct:] ]", " ", dataset$V6_clean1)
 
+
 #Export the data to a text file
 write.table(dataset$V6_clean2, file = "data.txt", sep = "\t",row.names = FALSE,col.names = FALSE)
 
@@ -33,12 +34,45 @@ tagged.text <- treetag(
 # Inspect the result
 tagged.text
 
+#list with the extracted elements
+l<-c()
+
 #Extract all the verbs
 for (word in 1:1700){
   if(tagged.text[word,3] == "VBD"){
-    print(tagged.text[word,2])
+    l<-c(l,tagged.text[word,2])
   }
 }
 
+
+#Extract all the adjectives
+for (word in 1:1700){
+  if(tagged.text[word,3] == "AJ0"){
+    l<-c(l,tagged.text[word,2])
+  }
+}
+
+
+#Extract all the nouns NN0,NN1,NN2
+for (word in 1:1700){
+  w <- tagged.text[word,3]
+  if(w == "NN0"| w == "NN1"| w == "NN2"){
+    l<-c(l,tagged.text[word,2])
+  }
+}
+
+any(l == "Villa")
+
+List <- strsplit(dataset$V6_clean2, " ")
+#clean new row
+dataset$V6_clean3 <- ""
+
+for (row in 1:nrow(dataset)){
+  for(el in 1:length(List[[row]])){
+  if(any(l == List[[row]][el])){
+    dataset$V6_clean3[row] <- paste(dataset$V6_clean3[row],List[[row]][el])
+  }
+  }
+}
 
 
