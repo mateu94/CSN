@@ -5,7 +5,7 @@ N <- 3
 coocurrence_graph <- make_empty_graph(directed = FALSE)
 coocurrence_graph <- set_edge_attr(coocurrence_graph, "coocurrences", value = 0)
 
-tweets <- read.csv("tweets.csv", header=TRUE)
+tweets <- read.csv("data_processed.csv", header=TRUE)
 for(i in 1:nrow(tweets)) {
   tweet <- tweets$V6_clean3[i]
   tweet <- trimws(tweet, "l")
