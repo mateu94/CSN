@@ -1,16 +1,19 @@
-install.packages("koRpus")
-install.koRpus.lang("en")
+#install.packages("koRpus")
+
 # load the package
 library(koRpus)
+
+#install.koRpus.lang("en")
 library(koRpus.lang.en)
 
 # Read in csv files (for the moment only the 100 first lines)
-dataset_1 = read.csv(file = "/Users/roberto/Desktop/twitter-data/data.csv",nrows=5000,head(FALSE))
-dataset_2 = read.csv(file = "/Users/roberto/Desktop/twitter-data/data.csv",nrows=5000,skip=800000,head(FALSE))
+dataset_1 = read.csv(file = "tweets_raw.csv",nrows=5000,head(FALSE))
+dataset_2 = read.csv(file = "tweets_raw.csv",nrows=5000,skip=800000,head(FALSE))
 dataset = rbind(dataset_1,dataset_2)
 
 # Inspect the result
 View(dataset)
+View(dataset_3)
 
 # elimination of the elements that are not part of the ASCII encoding.
 # elimination of punctuation symbols
@@ -27,7 +30,7 @@ tagged.text <- treetag(
   treetagger="manual",
   lang="en",
   TT.options=list(
-    path="/Users/roberto/Desktop/treetagger",
+    path="E:/TreeTagger",
     preset="en"
   ),
   doc_id="sample"
