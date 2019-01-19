@@ -6,7 +6,7 @@ library(koRpus)
 #install.koRpus.lang("en")
 library(koRpus.lang.en)
 
-# Read in csv files (for the moment only the 100 first lines)
+# Read in csv files (for the moment only the 1000 first lines)
 dataset_1 = read.csv(file = "tweets_raw.csv",nrows=5000,head(FALSE))
 dataset_2 = read.csv(file = "tweets_raw.csv",nrows=5000,skip=800000,head(FALSE))
 dataset = rbind(dataset_1,dataset_2)
