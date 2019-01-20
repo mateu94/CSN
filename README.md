@@ -19,3 +19,8 @@ The scripts we wrote to simulate the methodology described in the given [paper](
 6. `supervised_learning.py`: Executes the supervised learning using the popular words from the centrality measures and the training and test set.
 
 All scripts are written in R apart from the supervised learning which is done in Python 3. 
+
+## How to run
+1. Download or clone the repository.
+2. Run the Python script using `python supervised_learning.py` or `python3 supervised_learning.py`
+3. Pick option in menu GUI: ![menu_python_script](https://i.gyazo.com/b17bef82684543012d225d3ae70ccf87.png)
